@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Parcl buyer segmentation and investment profiling
 
 This project groups real-estate buyers by their client attributes and completed purchase behaviour. It produces a reproducible K-means model, a hierarchical-clustering validation, a concise findings report, and an interactive Streamlit dashboard.
@@ -99,3 +100,6 @@ Use the sidebar to filter country, region, acquisition purpose, and client type.
 ## How to use the results responsibly
 
 Segments support marketing and service design; they do not decide an individual’s eligibility, value, or access to offers. Before running a campaign, review segment results for fairness and re-train when substantial new client or sales records arrive.
+=======
+# Real-Estate-Market-Intelligence-app
+>>>>>>> 084a553f5968202e069bb2416b139f1865849c0a
