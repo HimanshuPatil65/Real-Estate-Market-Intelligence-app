@@ -1,0 +1,16 @@
+# Local Python environment and Python cache
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Reproducible pipeline outputs (regenerate with the training command)
+outputs/*.csv
+outputs/*.json
+models/*.joblib
+reports/research_paper.md
+
+# Keep empty project folders available in a fresh checkout
+!outputs/.gitkeep
+!models/.gitkeep
+!reports/.gitkeep

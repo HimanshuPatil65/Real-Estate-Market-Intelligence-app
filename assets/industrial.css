@@ -1,0 +1,312 @@
+/* Parcl Industrial Realism design tokens and Streamlit surface refinements. */
+:root {
+  --chassis: #e0e5ec;
+  --panel: #f0f2f5;
+  --recessed: #d1d9e6;
+  --ink: #2d3436;
+  --label: #4a5568;
+  --accent: #ff4757;
+  --accent-action: #c83343;
+  --shadow: #babecc;
+  --highlight: #ffffff;
+  --deep-shadow: #a3b1c6;
+  --dark-panel: #2d3436;
+  --card-shadow: 8px 8px 16px var(--shadow), -8px -8px 16px var(--highlight);
+  --floating-shadow: 12px 12px 24px var(--shadow), -12px -12px 24px var(--highlight), inset 1px 1px 0 rgba(255, 255, 255, 0.55);
+  --recessed-shadow: inset 4px 4px 8px var(--shadow), inset -4px -4px 8px var(--highlight);
+  --mechanical-ease: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+[data-testid="stAppViewContainer"] {
+  background:
+    radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.88) 0, transparent 30rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16) 25%, transparent 25%) 0 0 / 5px 5px,
+    var(--chassis);
+}
+
+[data-testid="stAppViewContainer"] .main .block-container {
+  max-width: 1440px;
+  padding-top: 2.25rem;
+  padding-bottom: 3.75rem;
+}
+
+[data-testid="stSidebar"] {
+  background:
+    radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.85), transparent 20rem),
+    var(--chassis);
+  border-right: 1px solid var(--highlight);
+  box-shadow: 8px 0 18px rgba(163, 177, 198, 0.55);
+}
+
+[data-testid="stSidebar"] > div:first-child {
+  padding-top: 1.6rem;
+}
+
+h1, h2, h3 {
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  text-shadow: 0 1px 0 var(--highlight);
+}
+
+[data-testid="stCaptionContainer"], [data-testid="stSidebar"] label {
+  color: var(--label);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Recessed controls: depth, focused safety lighting, and touch-friendly height. */
+[data-baseweb="select"] > div,
+[data-testid="stSidebar"] [data-baseweb="select"] > div {
+  min-height: 3.25rem;
+  background: var(--chassis) !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  box-shadow: var(--recessed-shadow) !important;
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+[data-baseweb="select"] > div:focus-within {
+  box-shadow: var(--recessed-shadow), 0 0 0 2px var(--accent-action) !important;
+}
+
+[data-baseweb="select"] input,
+[data-baseweb="select"] span {
+  color: var(--ink) !important;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.82rem;
+}
+
+/* Tactile Streamlit buttons. Primary controls use a darker red so white text meets contrast requirements. */
+.stButton > button {
+  min-height: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  background: var(--chassis);
+  color: var(--ink);
+  box-shadow: 5px 5px 10px var(--shadow), -5px -5px 10px var(--highlight);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 160ms var(--mechanical-ease), box-shadow 160ms ease, filter 160ms ease;
+}
+
+.stButton > button:hover {
+  color: var(--accent-action);
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+  box-shadow: var(--floating-shadow);
+}
+
+.stButton > button:active {
+  transform: translateY(2px);
+  box-shadow: inset 5px 5px 10px var(--shadow), inset -5px -5px 10px var(--highlight);
+}
+
+.stButton > button:focus-visible {
+  outline: 3px solid var(--accent-action);
+  outline-offset: 3px;
+}
+
+/* Raised measurement modules. */
+[data-testid="stMetric"] {
+  min-height: 8.7rem;
+  padding: 1.2rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 12px 12px, rgba(45, 52, 54, 0.18) 0 2px, transparent 2.8px),
+    radial-gradient(circle at calc(100% - 12px) 12px, rgba(45, 52, 54, 0.18) 0 2px, transparent 2.8px),
+    radial-gradient(circle at 12px calc(100% - 12px), rgba(45, 52, 54, 0.18) 0 2px, transparent 2.8px),
+    radial-gradient(circle at calc(100% - 12px) calc(100% - 12px), rgba(45, 52, 54, 0.18) 0 2px, transparent 2.8px),
+    var(--panel);
+  box-shadow: var(--card-shadow);
+}
+
+[data-testid="stMetricLabel"] {
+  color: var(--label);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+[data-testid="stMetricValue"] {
+  color: var(--ink);
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  text-shadow: 0 1px 0 var(--highlight);
+}
+
+/* Tab strip as a compact instrument selector. */
+[data-testid="stTabs"] [data-baseweb="tab-list"] {
+  gap: 0.45rem;
+  padding: 0.45rem;
+  border-radius: 14px;
+  background: var(--recessed);
+  box-shadow: var(--recessed-shadow);
+}
+
+[data-testid="stTabs"] [data-baseweb="tab"] {
+  min-height: 2.8rem;
+  border: 0;
+  border-radius: 8px;
+  color: var(--label);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 180ms var(--mechanical-ease);
+}
+
+[data-testid="stTabs"] [aria-selected="true"] {
+  background: var(--panel) !important;
+  color: var(--accent-action) !important;
+  box-shadow: 4px 4px 8px var(--shadow), -4px -4px 8px var(--highlight);
+}
+
+[data-testid="stTabs"] [data-baseweb="tab-highlight"] { background: transparent !important; }
+
+/* These keyed containers are the reusable bolted chart and table modules. */
+.st-key-overview_distribution_panel,
+.st-key-overview_share_panel,
+.st-key-investment_purpose_panel,
+.st-key-financing_panel,
+.st-key-portfolio_scale_panel,
+.st-key-geography_map_panel,
+.st-key-geography_region_panel,
+.st-key-segment_table_panel,
+.st-key-quality_coverage_panel,
+.st-key-quality_diagnostics_panel {
+  position: relative;
+  overflow: hidden;
+  padding: 1.1rem 1.15rem 1.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.72) !important;
+  border-radius: 16px !important;
+  background:
+    radial-gradient(circle at 12px 12px, rgba(45, 52, 54, 0.18) 0 2px, transparent 2.8px),
+    radial-gradient(circle at calc(100% - 12px) 12px, rgba(45, 52, 54, 0.18) 0 2px, transparent 2.8px),
+    radial-gradient(circle at 12px calc(100% - 12px), rgba(45, 52, 54, 0.18) 0 2px, transparent 2.8px),
+    radial-gradient(circle at calc(100% - 12px) calc(100% - 12px), rgba(45, 52, 54, 0.18) 0 2px, transparent 2.8px),
+    var(--panel);
+  box-shadow: var(--card-shadow);
+  transition: transform 300ms var(--mechanical-ease), box-shadow 300ms ease;
+}
+
+.st-key-overview_distribution_panel:hover,
+.st-key-overview_share_panel:hover,
+.st-key-investment_purpose_panel:hover,
+.st-key-financing_panel:hover,
+.st-key-portfolio_scale_panel:hover,
+.st-key-geography_map_panel:hover,
+.st-key-geography_region_panel:hover,
+.st-key-segment_table_panel:hover,
+.st-key-quality_coverage_panel:hover,
+.st-key-quality_diagnostics_panel:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--floating-shadow);
+}
+
+[data-testid="stDataFrame"] { border-radius: 8px; box-shadow: var(--recessed-shadow); overflow: hidden; }
+
+/* Header device mockup: a CSS-built control instrument, not an external image. */
+.industrial-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(250px, 0.8fr);
+  gap: clamp(1.5rem, 4vw, 4.5rem);
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2.3rem;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 15px 15px, rgba(45, 52, 54, 0.18) 0 2px, transparent 2.8px),
+    radial-gradient(circle at calc(100% - 15px) 15px, rgba(45, 52, 54, 0.18) 0 2px, transparent 2.8px),
+    radial-gradient(circle at 15px calc(100% - 15px), rgba(45, 52, 54, 0.18) 0 2px, transparent 2.8px),
+    radial-gradient(circle at calc(100% - 15px) calc(100% - 15px), rgba(45, 52, 54, 0.18) 0 2px, transparent 2.8px),
+    radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.85), transparent 32rem),
+    var(--panel);
+  box-shadow: var(--floating-shadow);
+}
+
+.industrial-eyebrow, .device-label, .signal-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.8rem;
+  color: var(--label);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.industrial-hero h1 {
+  max-width: 11ch;
+  margin: 0;
+  color: var(--ink);
+  font-family: Inter, sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.65rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 0.93;
+  text-shadow: 0 1px 0 var(--highlight);
+}
+
+.industrial-hero h1 span { color: var(--accent-action); }
+.industrial-copy { max-width: 42rem; }
+.industrial-copy > p:not(.industrial-eyebrow) { max-width: 58ch; margin: 1.3rem 0 0; color: var(--label); line-height: 1.7; }
+
+.status-led {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px 2px rgba(255, 71, 87, 0.58), inset 1px 1px 1px rgba(255, 255, 255, 0.72);
+  animation: led-breathe 2.4s ease-in-out infinite;
+}
+
+.signal-rack { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem; }
+.signal-block { min-width: 7.4rem; padding: 0.7rem 0.85rem; border-radius: 8px; background: var(--recessed); box-shadow: var(--recessed-shadow); }
+.signal-block strong { display: block; color: var(--ink); font-family: "JetBrains Mono", monospace; font-size: 1.05rem; }
+.signal-label { margin: 0.25rem 0 0; font-size: 0.58rem; letter-spacing: 0.06em; }
+
+.control-device { justify-self: center; width: min(100%, 22rem); padding: 0.8rem; border: 4px solid #2c3e50; border-radius: 22px; background: linear-gradient(135deg, #485766, #1f2933); box-shadow: 14px 14px 22px rgba(80, 94, 111, 0.38), -3px -3px 5px rgba(255, 255, 255, 0.75), inset 1px 1px 0 rgba(255, 255, 255, 0.18); transform: rotate(1.2deg); transition: transform 300ms var(--mechanical-ease); }
+.industrial-hero:hover .control-device { transform: rotate(0deg) scale(1.015); }
+.device-topline { display: flex; justify-content: space-between; align-items: center; padding: 0 0.15rem 0.65rem; }
+.device-label { margin: 0; color: #d9e2ec; font-size: 0.55rem; }
+.device-vents { display: flex; gap: 0.22rem; }
+.device-vents i { display: block; width: 0.16rem; height: 1rem; border-radius: 999px; background: #111820; box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.12); }
+.device-screen { position: relative; overflow: hidden; min-height: 13.5rem; padding: 1rem; border: 4px solid #10171d; border-radius: 11px; background: linear-gradient(145deg, #121d22, #081013); box-shadow: inset 5px 5px 11px #020607, inset -2px -2px 6px rgba(255, 255, 255, 0.07); color: #e0e5ec; }
+.device-screen::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(rgba(255,255,255,0) 50%, rgba(0,0,0,0.27) 50%); background-size: 100% 4px; opacity: 0.38; }
+.screen-heading { margin: 0; color: #f0f2f5; font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; }
+.screen-line { display: flex; justify-content: space-between; margin-top: 0.8rem; color: #a8b2d1; font-family: "JetBrains Mono", monospace; font-size: 0.62rem; }
+.screen-bar { height: 0.52rem; margin-top: 0.35rem; overflow: hidden; border-radius: 999px; background: #26343d; box-shadow: inset 1px 1px 3px #060a0c; }
+.screen-bar span { display: block; height: 100%; border-radius: inherit; background: var(--accent); box-shadow: 0 0 9px rgba(255, 71, 87, 0.75); }
+.device-controls { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 0.55rem; padding-top: 0.75rem; }
+.device-button { min-height: 1.8rem; border-radius: 6px; background: #d1d9e6; box-shadow: 2px 2px 4px #111820, -1px -1px 2px rgba(255, 255, 255, 0.28); }
+.device-button.accent { background: var(--accent); box-shadow: 2px 2px 4px #571920, -1px -1px 2px rgba(255, 157, 166, 0.45); }
+
+@keyframes led-breathe { 50% { opacity: 0.6; box-shadow: 0 0 5px 1px rgba(255, 71, 87, 0.38); } }
+
+@media (max-width: 760px) {
+  [data-testid="stAppViewContainer"] .main .block-container { padding: 1.1rem 1rem 2rem; }
+  .industrial-hero { grid-template-columns: 1fr; padding: 1.5rem; }
+  .industrial-hero h1 { font-size: clamp(2.45rem, 13vw, 3.5rem); }
+  .control-device { width: min(100%, 19rem); transform: none; }
+  [data-testid="stMetric"] { min-height: 7.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
