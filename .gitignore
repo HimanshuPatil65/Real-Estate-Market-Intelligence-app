@@ -14,3 +14,8 @@ reports/research_paper.md
 !outputs/.gitkeep
 !models/.gitkeep
 !reports/.gitkeep
+
+!outputs/*.csv
+!outputs/*.json
+!models/*.joblib
+!reports/research_paper.md

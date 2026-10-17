@@ -1,0 +1,37 @@
+{
+  "reporting_date": "2025-12-01",
+  "clients": 2000,
+  "properties": 10000,
+  "sold_properties": 7305,
+  "available_listings": 2695,
+  "selected_clusters": 4,
+  "selection_method": "manual",
+  "kmeans_silhouette_score": 0.1173815948945111,
+  "hierarchical_silhouette_score": 0.061237299207847366,
+  "adjusted_rand_index": 0.239460168357312,
+  "excluded_from_model": [
+    "client_id",
+    "first_name",
+    "last_name",
+    "date_of_birth",
+    "gender",
+    "latest_purchase_date"
+  ],
+  "numeric_features": [
+    "age",
+    "satisfaction_score",
+    "purchase_count",
+    "total_spend",
+    "average_purchase_price",
+    "average_floor_area_sqft",
+    "office_purchase_share"
+  ],
+  "categorical_features": [
+    "client_type",
+    "country",
+    "region",
+    "acquisition_purpose",
+    "loan_applied",
+    "referral_channel"
+  ]
+}
